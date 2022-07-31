@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    flex: 1;
+    height: 90vh;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    min-width: 800px;
+}
+
+body div {
+    padding: 40px;
+}
+
+#title {
+    font-size: 24px;
+}
+
+#intro {
+    text-align: center;
+}
+
+#content {
+}
