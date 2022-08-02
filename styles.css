@@ -1,24 +1,72 @@
+html {
+    height: 100vh;
+    font-size: 24px;
+}
+
 body {
     display: flex;
     flex: 1;
     height: 90vh;
-    margin: auto;
+    margin: 40px auto;
     justify-content: center;
     align-items: center;
     min-width: 800px;
+    background-color: transparent;
 }
 
-body div {
-    padding: 40px;
+#content * {
+    border: 1px solid green;
+    /* display: flex; */
+    /* flex: 1; */
 }
 
-#title {
-    font-size: 24px;
+#calculator {
+    /* display: flex; */
+    flex-direction: column;
+    width: 500px;
+    height: 800px;
+    margin: 20px;
+    border-radius: 10px 4px;
+    box-shadow: 10px 5px 5px rgba(128, 128, 128, 0.489);
+    border: 1px solid gray;
 }
 
-#intro {
-    text-align: center;
+#calculator > div > * {
+    display: flex;
+    flex: 1;
+    /* padding: 10px; */
+    margin: 10px;
 }
 
-#content {
+#screen {
+    width: auto;
+    height: 250px;
+    margin: 20px;
+    flex: 0 0 auto;
+}
+
+#buttons > div {
+    height: 100px;
+    /* display: flex; */
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+#buttons > * {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid purple;
+    height: 100px;
+}
+
+#numbers > div > div {
+    /* flex-direction: column; */
+    flex: 1 1 auto;
+    height: 100px;
+    border: 2px solid red;
+}
+
+.top, .middle, .bottom {
+    display: flex;
+    /* flex: 1 1 auto; */
 }
