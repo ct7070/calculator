@@ -11,38 +11,50 @@
     <link rel="icon" href="./media/icon.png">
 </head>
 <body>
-    <div id="content">
+    <div class="content">
         <div id="calculator">
             <div id="screen"></div>
             <div id="buttons">
-                    <div id="operators">
-                        <div id="add"></div>
-                        <div id="subtract"></div>
-                        <div id="multiply"></div>
-                        <div id="divide"></div>
+                <div id="special">
+                    <div id="clear" class="special">
+                        <img src="./media/delete.png"><img/>
+                        </div>
+                    <div id="backspace" class="special">
+                        <img src="./media/backspace.png"><img/>
                     </div>
-                    <div id="numbers">
-                        <div id="numRowTop">
-                            <div class="top"></div>
-                            <div class="top"></div>
-                            <div class="top"></div>
-                        </div>
-                        <div id="numRowMiddle">
-                            <div class="middle"></div>
-                            <div class="middle"></div>
-                            <div class="middle"></div>
-                        </div>
-                        <div id="numRowBottom">
-                            <div class="bottom"></div>
-                            <div class="bottom"></div>
-                            <div class="bottom"></div>
-                        </div>
-                        <div id="numRowBasement">
-                            <div class="basement"></div>
-                            <div class="basement"></div>
-                        </div>
+                </div>
+                <div id="operators">
+                    <div class="operators add">&#10133;</div>
+                    <div class="operators subtract">&#10134;</div>
+                    <div class="operators multiply">&#10006;</div>
+                    <div class="operators divide">&#10135;</div>
+                </div>
+                <div id="group">
+                    <div class="row">
+                        <!-- <div class="numbers">6</div> -->
+                        <div class="numbers">7</div>
+                        <div class="numbers">8</div>
+                        <div class="numbers">9</div>
                     </div>
-                <!-- <div id="buttonsSide"></div> -->
+                    <div class="row">
+                        <!-- <div class="numbers"></div> -->
+                        <div class="numbers">4</div>
+                        <div class="numbers">5</div>
+                        <div class="numbers">6</div>
+                    </div>
+                    <div class="row">
+                        <!-- <div class="numbers"></div> -->
+                        <div class="numbers">1</div>
+                        <div class="numbers">2</div>
+                        <div class="numbers">3</div>
+                    </div>
+                    <div class="row lastRow">
+                        <!-- <div class="numbers"></div> -->
+                        <div id="decimal" class="numbers">.</div>
+                        <div id="zero" class="numbers">0</div>
+                        <div id="equals" class="numbers">=</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
