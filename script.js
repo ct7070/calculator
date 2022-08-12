@@ -36,5 +36,4 @@ console.log(btnSpecial);
 
 const btnNumPress = document.addEventListener('click', (key) => {
     console.log(key.target);
-
 });
