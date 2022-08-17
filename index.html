@@ -4,54 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>CrOS Calculator Clone</title>
     <meta name="description" content="Simply, a simple web calculator">
     <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" href="./media/icon.png">
 </head>
 <body>
-    <div class="content">
-        <div id="calculator">
-            <div id="screen"></div>
-            <div id="buttons">
-                <div id="special">
-                    <div id="clear" class="special clear">
-                        <img src="./media/delete.png" class="clear"><img/>
-                        </div>
-                    <div id="backspace" class="special backspace">
-                        <img src="./media/backspace.png" class="backspace"><img/>
-                    </div>
+    <div id="calculator">
+        <div id="screen">
+            <div id="screenDisplay" class="screen">
+                <div id="screenSpacer">&nbsp;</div>
+            </div>
+        </div>
+        <div id="buttons">
+            <div id="numbers">
+                <div>
+                    <div>7</div>
+                    <div>8</div>
+                    <div>9</div>
                 </div>
-                <div id="operators">
-                    <div class="operators add">&#10133;</div>
-                    <div class="operators subtract">&#10134;</div>
-                    <div class="operators multiply">&#10006;</div>
-                    <div class="operators divide">&#10135;</div>
+                <div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
                 </div>
-                <div id="group">
-                    <div class="row">
-                        <div class="numbers">7</div>
-                        <div class="numbers">8</div>
-                        <div class="numbers">9</div>
-                    </div>
-                    <div class="row">
-                        <div class="numbers">4</div>
-                        <div class="numbers">5</div>
-                        <div class="numbers">6</div>
-                    </div>
-                    <div class="row">
-                        <div class="numbers">1</div>
-                        <div class="numbers">2</div>
-                        <div class="numbers">3</div>
-                    </div>
-                    <div class="row lastRow">
-                        <div id="decimal" class="numbers">&#8226;</div>
-                        <div id="zero" class="numbers">0</div>
-                        <div id="equals" class="numbers">&#61;</div>
-                    </div>
+                <div>
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                </div>
+                <div>
+                    <div class="decimal">.</div>
+                    <div>0</div>
+                    <div class="equals">=</div>
                 </div>
             </div>
+            <div id="operators">
+                <div class="clear">AC</div>
+                <div class="divide">&divide;</div>
+                <div class="multiply">&#10005;</div>
+                <div class="subtract">&ndash;</div>
+                <div class="add">+</div>
+            </div>
+            <div id="special" class="backspace">&#60;</div>
         </div>
     </div>
 </body>
