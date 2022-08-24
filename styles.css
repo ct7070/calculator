@@ -1,15 +1,18 @@
 :root {
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    /* box-sizing: border-box; */
+    font-family: Roboto, Arial, sans-serif;
     font-size: 36px;
     font-weight: 300;
     color: rgba(230, 236, 255, 0.804);
-    margin: 0;
-    padding: 1px;
     overflow: hidden;
 }
 
+body {
+    margin: 0;
+}
+
 #calculator {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -25,7 +28,6 @@
     flex-direction: column-reverse;
     padding-bottom: 1rem;
     flex: 0 1 auto;
-
 }
 
 #screenDisplay {
@@ -37,7 +39,10 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    justify-items: flex-end;
+}
+
+#screenDisplay > span {
+    height: 90px;
 }
 
 #screenDisplay > div {
@@ -45,7 +50,7 @@
     justify-content: center;
     justify-items: flex-end;
     align-items: right;
-    height: 65px;
+    height: 80px;
 }
 
 #screenSpacer {
@@ -90,8 +95,8 @@
     display: flex;
     flex-direction: column;
     background-color: #4a4a4a;
-    font-size: 1.2em;
-    font-weight: lighter;
+    font-size: 1.4em;
+    font-weight: 300;
 }
 
 #special {
@@ -106,4 +111,20 @@ p:nth-child(n-1) {
     margin-top: 0;
     padding-top: 0.25em;
     color: black;
+}
+
+#newEntry .newArg {
+    animation-duration: 200ms;
+    animation-name: newEntry;
+    animation-iteration-count: 1;
+}
+
+@keyframes newEntry {
+    from {
+        margin-right: -10%;
+    }
+    to {
+        margin-right: 0%;
+    }
+
 }

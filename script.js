@@ -28,14 +28,22 @@ const btnPress = btns.addEventListener('click', (key) => {
         } 
     } else {
         insertOp.id = "newEntry";
+        // insertOp.addEventListener('compositionstart', () => {
+        //     insertOp.animate(newEntry);
+        // });
         screenSpacer.appendChild(insertOp);
         validateKeypress(btnPress, btnClass);
     }
 });
+
+const typeSlide = document.getElementById('newEntry');
     
 function validateKeypress(btnPress, btnClass){
     const printNextArg = document.createElement('span');
     if(!btnClass){  // button is a number
+        // firstArgument.addEventListener('compositionstart', () => {
+        //     insertOp.animate(firstArg);
+        // });
         firstArgument.textContent += btnPress;
         insertOp.appendChild(firstArgument);
     } else if(btnClass == "decimal"){
@@ -94,7 +102,7 @@ function validateKeypress(btnPress, btnClass){
 
                 const printResult = document.createElement('p');
                 printResult.classList.add("result");
-                printResult.textContent = result;
+                printResult.textContent = parseFloat(result.toPrecision(10));
                 screenParent.insertBefore(printResult, screenSpacer);
 
                 updateOperator(btnClass);
@@ -111,7 +119,7 @@ function updateOperator(btnClass){
             symbol = "÷";
             operator = "divide"
         } else if (btnClass == "multiply") {
-            symbol = "✕";
+            symbol = "x";
             operator = "multiply"
         } else if (btnClass == "subtract") {
             symbol = "–";
@@ -171,20 +179,24 @@ function doMath(arg2, arg1, op){
 // MATH FUNCTIONS
 function addition(arg1, arg2){
     result = arg2 + arg1;
-    return result;
+    console.log(parseFloat(result.toFixed(12)));
+    return parseFloat(result.toFixed(12));
 }
 
 function subtraction(arg1, arg2){
     result = arg2 - arg1;
-    return result;
+    console.log(parseFloat(result.toFixed(12)));
+    return parseFloat(result.toFixed(12));
 }
 
 function multiplication(arg1, arg2){
     result = arg2 * arg1;
-    return result;
+    console.log(parseFloat(result.toFixed(12)));
+    return parseFloat(result.toFixed(12));
 }
 
 function division(arg1, arg2){
     result = arg2 / arg1;
-    return result;
+    console.log(parseFloat(result.toFixed(12)));
+    return parseFloat(result.toFixed(12));
 }
