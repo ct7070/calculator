@@ -189,6 +189,7 @@ function subtraction(arg1, arg2){
     return parseFloat(result.toFixed(12));
 }
 
+
 function multiplication(arg1, arg2){
     result = arg2 * arg1;
     console.log(parseFloat(result.toFixed(12)));
@@ -200,3 +201,8 @@ function division(arg1, arg2){
     console.log(parseFloat(result.toFixed(12)));
     return parseFloat(result.toFixed(12));
 }
+/*
+const btnNumPress = document.addEventListener('click', (key) => {
+    console.log(key.target);
+});
+*/
