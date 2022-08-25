@@ -6,6 +6,9 @@ let btnDecimalActive = true;
 let symbol = "";
 let nuked = false;
 
+let btnPress = "";
+let btnClass = ""; 
+
 const btns = document.querySelector('#buttons');
 const ops = document.querySelectorAll('#operators div');
 
@@ -16,10 +19,45 @@ const insertOp = document.createElement('span');
 const screenSpacer = document.querySelector('#screenSpacer');
 const screenParent = document.getElementById('screenSpacer').parentElement;
 
-const btnPress = btns.addEventListener('click', (key) => {
+const btnClick = btns.addEventListener('click', (key) => { listenHere(key, true) });
+// const btnPress = document.addEventListener('keydown', (key) => { listenHere(key, false) });
+const keyPress = document.addEventListener('keydown', (key) => { heardKey(key) });
+
+function heardKey(key){
+    // console.log(key);
+    const keyd = key.key;
+    const keyNum = parseInt(keyd);
+    const specialKeys = [
+        { kbPush: '+', kbSend: 'add', },
+        { kbPush: '-', kbSend: 'subtract', },
+        { kbPush: '*', kbSend: 'multiply', },
+        { kbPush: 'x', kbSend: 'multiply', },
+        { kbPush: '/', kbSend: 'divide', },
+        { kbPush: '%', kbSend: 'divide', },
+        { kbPush: '<', kbSend: 'backspace', },
+        { kbPush: '=', kbSend: 'equals', },
+        { kbPush: '.', kbSend: 'decimal', },
+        { kbPush: 'Backspace', kbSend: 'backspace', },
+        { kbPush: 'Enter', kbSend: 'equals', },
+        { kbPush: 'Escape', kbSend: 'clear', },
+    ];
+
+    if(isNaN(keyNum)){
+        specialKeys.forEach(kvp => {
+            if(kvp.kbPush == keyd){ 
+                listenHere("", false, kvp.kbSend)
+            }
+        });
+    } else { listenHere(keyNum, false, ""); }
+}
+
+function listenHere(key, wasClicked, btnClass){
     const results = document.querySelectorAll('.result');
-    const btnPress = key.target.textContent;
-    const btnClass = key.target.className;
+    
+    if(wasClicked == true){
+        btnPress = key.target.textContent;
+        btnClass = key.target.className;
+    } else { btnPress = key; }
 
     if (btnClass == "clear"){
         fullReset();
@@ -29,22 +67,16 @@ const btnPress = btns.addEventListener('click', (key) => {
         } 
     } else {
         insertOp.id = "newEntry";
-        // insertOp.addEventListener('compositionstart', () => {
-        //     insertOp.animate(newEntry);
-        // });
         screenSpacer.appendChild(insertOp);
         validateKeypress(btnPress, btnClass);
     }
-});
+}
 
 const typeSlide = document.getElementById('newEntry');
     
 function validateKeypress(btnPress, btnClass){
     const printNextArg = document.createElement('span');
     if(!btnClass){  // button is a number
-        // firstArgument.addEventListener('compositionstart', () => {
-        //     insertOp.animate(firstArg);
-        // });
         firstArgument.textContent += btnPress;
         insertOp.appendChild(firstArgument);
     } else if(btnClass == "decimal"){
@@ -122,6 +154,8 @@ function validateKeypress(btnPress, btnClass){
 function updateOperator(btnClass){ 
     // console.log(`UPDATING OPERATOR ... received ${btnClass}`);
     if(btnClass == ""){
+    } else if (btnClass == "backspace"){
+        validateKeypress("", "backspace");
     } else {
         if (btnClass == "divide") {
             symbol = "÷";
