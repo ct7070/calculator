@@ -4,6 +4,7 @@ let result = 0;
 let operator = "";
 let btnDecimalActive = true;
 let symbol = "";
+let nuked = false;
 
 const btns = document.querySelector('#buttons');
 const ops = document.querySelectorAll('#operators div');
@@ -98,13 +99,20 @@ function validateKeypress(btnPress, btnClass){
                 }
                 printNextArg.textContent = symbol + " " + arg1;
                 printNextArg.classList.add("result");
-                screenParent.insertBefore(printNextArg, screenSpacer);
+                // screenParent.insertBefore(printNextArg, screenSpacer);
 
                 const printResult = document.createElement('p');
                 printResult.classList.add("result");
                 printResult.textContent = parseFloat(result.toPrecision(10));
-                screenParent.insertBefore(printResult, screenSpacer);
-
+                // screenParent.insertBefore(printResult, screenSpacer);
+                
+                if(nuked == true){
+                    console.warn("https://www.youtube.com/watch?v=ydLTfyXaQmU");
+                    nuked = false;
+                } else {
+                    screenParent.insertBefore(printNextArg, screenSpacer);
+                    screenParent.insertBefore(printResult, screenSpacer);
+                } 
                 updateOperator(btnClass);
             }
         }
@@ -197,9 +205,14 @@ function multiplication(arg1, arg2){
 }
 
 function division(arg1, arg2){
-    result = arg2 / arg1;
-    console.log(parseFloat(result.toFixed(12)));
-    return parseFloat(result.toFixed(12));
+    if(arg1 == 0){
+        console.warn("OK, RIEMANN... RESETTING TO PREVIOUS RESULT.");
+        nuked = true;
+    } else {
+        result = arg2 / arg1;
+        console.log(parseFloat(result.toFixed(12)));
+        return parseFloat(result.toFixed(12));
+    }
 }
 /*
 const btnNumPress = document.addEventListener('click', (key) => {
