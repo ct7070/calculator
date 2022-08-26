@@ -113,22 +113,30 @@ p:nth-child(n-1) {
     color: black;
 }
 
-#newEntry .newArg {
-    animation-duration: 200ms;
-    animation-name: newEntry;
-    animation-iteration-count: 1;
+.noAnimate {
+    position: relative;
+}
+
+.animate {
+    /* animation-duration: 200ms; */
+    /* animation-name: animateMe; */
+    animation: animateMe 300ms forwards;
+    position: relative;
+    opacity: 0;
 }
 
 .top {
    margin-bottom: -1rem; 
 }
 
-@keyframes newEntry {
+@keyframes animateMe {
     from {
-        margin-right: -10%;
+        margin-right: -5%;
+        opacity: 0.2;
     }
     to {
         margin-right: 0%;
+        opacity: 1;
     }
 
 }

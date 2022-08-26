@@ -20,11 +20,9 @@ const screenSpacer = document.querySelector('#screenSpacer');
 const screenParent = document.getElementById('screenSpacer').parentElement;
 
 const btnClick = btns.addEventListener('click', (key) => { listenHere(key, true) });
-// const btnPress = document.addEventListener('keydown', (key) => { listenHere(key, false) });
 const keyPress = document.addEventListener('keydown', (key) => { heardKey(key) });
 
 function heardKey(key){
-    // console.log(key);
     const keyd = key.key;
     const keyNum = parseInt(keyd);
     const specialKeys = [
@@ -76,8 +74,26 @@ const typeSlide = document.getElementById('newEntry');
     
 function validateKeypress(btnPress, btnClass){
     const printNextArg = document.createElement('span');
+    const totalAnimates = document.querySelectorAll('.animate');
     if(!btnClass){  // button is a number
-        firstArgument.textContent += btnPress;
+        const animatedChar = document.createElement('span');
+        animatedChar.classList.add('animate');
+        if(btnPress == '0'){
+            if(firstArgument.textContent == ""){
+                btnPress = "0.";
+                btnDecimalActive = false;
+            }
+        }
+        if(totalAnimates){
+            if(operator){
+                firstArgument.textContent = insertOp.textContent.slice(1);
+            } else {
+                firstArgument.textContent = insertOp.textContent;
+            }
+            firstArgument.classList.add('noAnimate');
+        }
+        animatedChar.textContent = btnPress;
+        firstArgument.append(animatedChar);
         insertOp.appendChild(firstArgument);
     } else if(btnClass == "decimal"){
         if(btnDecimalActive == true){
@@ -131,12 +147,10 @@ function validateKeypress(btnPress, btnClass){
                 }
                 printNextArg.textContent = symbol + " " + arg1;
                 printNextArg.classList.add("result");
-                // screenParent.insertBefore(printNextArg, screenSpacer);
-
+                
                 const printResult = document.createElement('p');
                 printResult.classList.add("result");
                 printResult.textContent = parseFloat(result.toPrecision(10));
-                // screenParent.insertBefore(printResult, screenSpacer);
                 
                 if(nuked == true){
                     console.warn("https://www.youtube.com/watch?v=ydLTfyXaQmU");
@@ -152,10 +166,9 @@ function validateKeypress(btnPress, btnClass){
 } 
 
 function updateOperator(btnClass){ 
-    // console.log(`UPDATING OPERATOR ... received ${btnClass}`);
     if(btnClass == ""){
     } else if (btnClass == "backspace"){
-        validateKeypress("", "backspace");
+        validateKeypress("", btnClass);
     } else {
         if (btnClass == "divide") {
             symbol = "÷";
@@ -173,8 +186,6 @@ function updateOperator(btnClass){
             symbol = "";
             operator = "";
         }
-        const entry = document.getElementById('newEntry');
-        const nextArg = entry.textContent.slice(4);
         newOp.classList.add('newOp');
         newOp.textContent = symbol;
         const newEntry = document.querySelector('#newEntry');
@@ -203,16 +214,12 @@ function fullReset(){
 function doMath(arg2, arg1, op){
     if (op == "divide") {
         division(arg1, arg2);
-        console.log(`result = ${result}`);
     } else if (op == "multiply") {
         multiplication(arg1, arg2);
-        console.log(`result = ${result}`);
     } else if (op == "subtract") {
         subtraction(arg1, arg2);
-        console.log(`result = ${result}`);
     } else if (op == "add") {
         addition(arg1, arg2);
-        console.log(`result = ${result}`);
     } else {
         console.warn("NOT A VALID OPERATION");
     }
@@ -248,8 +255,3 @@ function division(arg1, arg2){
         return parseFloat(result.toFixed(12));
     }
 }
-/*
-const btnNumPress = document.addEventListener('click', (key) => {
-    console.log(key.target);
-});
-*/
